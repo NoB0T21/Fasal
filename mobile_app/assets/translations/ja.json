@@ -1,0 +1,28 @@
+{
+  "onboarding": {
+    "title": "スマート作物アドバイザリー",
+    "subtitle": "小規模・零細農家のためのスマートアドバイザリーシステム",
+    "getStarted": "始める"
+  },
+  "languageSelector": {
+    "title": "言語を選択",
+    "subtitle": "続けるには希望の言語を選択してください",
+    "continue": "続ける"
+  },
+  "login": {
+    "title": "お帰りなさい",
+    "subtitle": "続けるにはログインしてください",
+    "phoneLabel": "携帯番号",
+    "phonePlaceholder": "携帯番号を入力",
+    "otpLabel": "OTPを入力",
+    "otpPlaceholder": "6桁のOTPを入力",
+    "sendOtp": "OTPを送信",
+    "verify": "確認してログイン",
+    "error": {
+      "invalidPhone": "有効な10桁の電話番号を入力してください",
+      "invalidOtp": "有効な6桁のOTPを入力してください"
+    },
+    "terms": "続けることで、利用規約とプライバシーポリシーに同意したことになります",
+    "back": "戻る"
+  }
+}

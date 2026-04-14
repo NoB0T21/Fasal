@@ -1,0 +1,28 @@
+{
+  "onboarding": {
+    "title": "Smart Crop Advisory",
+    "subtitle": "A smart advisory system for small and marginal farmers",
+    "getStarted": "Get Started"
+  },
+  "languageSelector": {
+    "title": "Select Your Language",
+    "subtitle": "Choose your preferred language to continue",
+    "continue": "Continue"
+  },
+  "login": {
+    "title": "Welcome Back",
+    "subtitle": "Login to continue",
+    "phoneLabel": "Mobile Number",
+    "phonePlaceholder": "Enter your mobile number",
+    "otpLabel": "Enter OTP",
+    "otpPlaceholder": "Enter 6-digit OTP",
+    "sendOtp": "Send OTP",
+    "verify": "Verify & Login",
+    "error": {
+      "invalidPhone": "Please enter a valid 10-digit phone number",
+      "invalidOtp": "Please enter a valid 6-digit OTP"
+    },
+    "terms": "By continuing, you agree to our Terms of Service and Privacy Policy",
+    "back": "Back"
+  }
+}
