@@ -1,8 +1,8 @@
 import Fastify from 'fastify';
 import envPlugin from './config/env.js';
 import securityPlugin from './plugins/security.js';
-import jwtPlugin from './plugins/jwt.js';
-// import routes from './routes';
+import session from './plugins/session.js';
+import routes from './routes/index.js';
 
 export const buildApp = () => {
   const app = Fastify({
@@ -12,8 +12,8 @@ export const buildApp = () => {
 
   app.register(envPlugin);
   app.register(securityPlugin);
-  app.register(jwtPlugin);
-//   app.register(routes);
+  app.register(session);
+  app.register(routes);
 
   app.get('/', async () => {
     return { message: 'Hello, World!' };
