@@ -21,7 +21,8 @@ export default async function (fastify: any) {
     cookie: {
       secure: process.env.NODE_ENV === 'production', // Use true for HTTPS
       httpOnly: true, // Prevents JS from reading the cookie (XSS protection)
-      maxAge: 86400000 // 1 day in milliseconds
+      maxAge: 86400000, // 1 day in milliseconds
+      sameSite: 'none'
     }
   });
 }

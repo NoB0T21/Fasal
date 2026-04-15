@@ -27,7 +27,10 @@ export const verifyStoredOTP = async (req: FastifyRequest<{Body: VerifyOTPBody}>
       res.status(400).send({ success: false, message: 'Invalid OTP' });
       return
     }
-    
+    if (!req.session) {
+      req.log.error("Session object is missing from request. Check plugin registration.");
+      return res.status(500).send({ success: false, message: 'Session configuration error' });
+    }
     redis.del(cacheKey); // Clean up OTP on error
     req.session.user = {
       phone: phone,
