@@ -5,7 +5,7 @@ const start = async () => {
 
   try {
     await app.listen({ port: 5000, host: '0.0.0.0' });
-    console.log('Server running');
+    console.log('Server running on');
   } catch (err) {
     app.log.error(err);
     process.exit(1);
