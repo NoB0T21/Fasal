@@ -1,0 +1,39 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Fasal Backend",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoB0T21/Fasal.git"
+  },
+  "author": "Aryan Gawade",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NoB0T21/Fasal/issues"
+  },
+  "homepage": "https://github.com/NoB0T21/Fasal#readme",
+  "dependencies": {
+    "@fastify/cors": "^11.2.0",
+    "@fastify/env": "^6.0.0",
+    "@fastify/helmet": "^13.0.2",
+    "@fastify/jwt": "^10.0.0",
+    "@fastify/rate-limit": "^10.3.0",
+    "@fastify/sensible": "^6.0.4",
+    "dotenv": "^17.4.2",
+    "fastify": "^5.8.5"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "nodemon": "^3.1.14",
+    "ts-node-dev": "^2.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  }
+}
