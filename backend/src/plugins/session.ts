@@ -1,9 +1,10 @@
 import fastifyCookie from '@fastify/cookie';
+import fp from 'fastify-plugin';
 import fastifySession from '@fastify/session';
 import { RedisStore } from 'connect-redis';
 import redis from '../DB/redis.js'; // Your existing ioredis instance
 
-export default async function (fastify: any) {
+export default fp(async function (fastify: any) {
   // 1. Register Cookies first (required for sessions)
   fastify.register(fastifyCookie);
 
@@ -25,4 +26,4 @@ export default async function (fastify: any) {
       sameSite: 'none'
     }
   });
-}
+})
