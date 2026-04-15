@@ -39,3 +39,31 @@ export const verifyStoredOTP = async (req: FastifyRequest<{Body: VerifyOTPBody}>
     res.status(500).send({ success: false, message: 'Try again after sometime' });
   }
 }
+
+export const verifyUser = async (req: FastifyRequest<{Body: SendOTPBody}>, res: FastifyReply) => {
+  const user = req.session.user;
+
+  if (!user) {
+    res.status(401).send({ 
+      success: false, 
+      message: "Unauthorized: No active session found" 
+    });
+    return
+  }
+  res.status(200).send({
+    success: true,
+    data: {
+      phone: user.phone,
+    }
+  });
+}
+
+export const logoutUser = async (req: FastifyRequest, res: FastifyReply) => {
+  if (req.session.user) {
+    // This removes the data from Redis and clears the cookie
+    await req.session.destroy();
+    return { success: true, message: "Logged out successfully" };
+  }
+  
+  return res.status(400).send({ message: "No active session to end" });
+};

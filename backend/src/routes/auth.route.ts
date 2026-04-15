@@ -2,7 +2,7 @@ import { FastifyInstance } from 'fastify';
 // import { verifyJWT } from '../middleware/auth.middleware';
 import { validate } from '../middleware/validator.js';
 import { sendOTP, verifyOTP } from '../utils/validator.schema.js';
-import { generateSendOTP, verifyStoredOTP } from '../controller/auth.controller.js';
+import { generateSendOTP, logoutUser, verifyStoredOTP, verifyUser } from '../controller/auth.controller.js';
 
 export default async function authRoutes(app: FastifyInstance) {
 
@@ -26,13 +26,6 @@ export default async function authRoutes(app: FastifyInstance) {
     preHandler: [validate(verifyOTP)]
   }, verifyStoredOTP);
 
-//   app.get('/profile', {
-//     preHandler: [verifyJWT]
-//   }, async (request) => {
-
-//     return {
-//       message: 'Protected route',
-//       user: request.user
-//     };
-//   });
+  app.get('/verify', verifyUser);
+  app.get('/logout', logoutUser);
 }
