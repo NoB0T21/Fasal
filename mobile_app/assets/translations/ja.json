@@ -24,5 +24,67 @@
     },
     "terms": "続けることで、利用規約とプライバシーポリシーに同意したことになります",
     "back": "戻る"
+  },
+  "setup": {
+    "welcome": "Fasalへようこそ！",
+    "setupProfile": "農場プロフィールを設定しましょう",
+    "location": "あなたの場所",
+    "locationDesc": "正確な天気予報と作物の推奨事項を提供するために、あなたの場所が必要です。",
+    "allowLocation": "位置情報へのアクセスを許可",
+    "enterManual": "手動で場所を入力",
+    "requesting": "位置情報の許可をリクエストしています...",
+    "locationDetected": "場所が検出されました",
+    "locationDenied": "位置情報へのアクセスが拒否されました",
+    "enableLocation": "位置情報を有効にするか、手動で入力してください",
+    "continue": "続ける",
+    "selectSoil": "土壌の種類を選択してください",
+    "soilDesc": "あなたの農場に合った土壌の種類を選択してください",
+    "completeSetup": "セットアップを完了",
+    "soilTypes": {
+      "clay": {
+        "name": "粘土質土壌",
+        "desc": "重く、濡れると粘着性があり、保水性が良い"
+      },
+      "sandy": {
+        "name": "砂質土壌",
+        "desc": "軽く、ざらざらしていて、水はけが早い"
+      },
+      "loamy": {
+        "name": "ローム質土壌",
+        "desc": "理想的な混合物で、肥沃で、バランスが取れている"
+      },
+      "silt": {
+        "name": "シルト質土壌",
+        "desc": "滑らかで、肥沃で、保湿性がある"
+      },
+      "black": {
+        "name": "黒綿土",
+        "desc": "粘土が豊富で、綿花に最適"
+      },
+      "red": {
+        "name": "赤土",
+        "desc": "鉄分が豊富で、多孔質で、水はけが良い"
+      }
+    }
+  },
+  "dashboard": {
+    "title": "スマート作物アドバイザリー",
+    "welcome": "おかえりなさい",
+    "farmMonitoring": "農場モニタリング",
+    "farmMonitoringDesc": "作物の管理とAIによる推奨事項の取得",
+    "todayWeather": "今日の天気",
+    "sunny": "晴れ",
+    "humidity": "湿度",
+    "wind": "風",
+    "cropPerformance": "作物のパフォーマンス",
+    "yieldTrends": "収穫量の傾向 (kg/エーカー)",
+    "todayAdvisories": "今日のアドバイス",
+    "irrigation": "灌漑",
+    "irrigationDesc": "今日、作物に水をまいてください - 土壌水分は45%です",
+    "fertilization": "施肥",
+    "fertilizationDesc": "窒素肥料を散布してください - 最適な成長期です",
+    "upcomingTasks": "今後のタスク",
+    "pestMonitoring": "害虫モニタリング",
+    "tomorrow": "明日"
   }
 }

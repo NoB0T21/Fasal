@@ -29,6 +29,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     ref.listen(authNotifierProvider, (prev, next) {
+      if (next.isLoading || next.isRefreshing) return;
       next.whenOrNull(
         error: (error, _) {
           final message = error is Exception
@@ -44,13 +45,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
               return OtpScreen(phoneNumber: num,);
             }));
-          } else {
+          } else if(data != null && data['success'] == false){
             CustomSnakebar.show(context, "Failed to send OTP", Type.error);
           }
         }
       );
     });
-    final registerState = ref.watch(authNotifierProvider);
+    ref.watch(authNotifierProvider);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(

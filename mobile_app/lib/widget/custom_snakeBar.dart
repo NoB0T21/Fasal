@@ -37,7 +37,7 @@ class CustomSnakebar {
     final snakebar = SnackBar(
       behavior: SnackBarBehavior.fixed,
       padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
-      backgroundColor: Colors.transparent,
+      backgroundColor: const Color.fromRGBO(0, 0, 0, 0),
       duration:  const Duration(seconds: 2),
       content: Container(
         padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
@@ -55,8 +55,8 @@ class CustomSnakebar {
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  color: Colors.white70,
-                )
+                  color: Theme.of(context).colorScheme.onSurface,
+                ),
               ),
             ),
           ],

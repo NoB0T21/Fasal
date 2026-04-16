@@ -24,5 +24,67 @@
     },
     "terms": "By continuing, you agree to our Terms of Service and Privacy Policy",
     "back": "Back"
+  },
+  "setup": {
+    "welcome": "Welcome to Fasal!",
+    "setupProfile": "Let's set up your farm profile",
+    "location": "Your Location",
+    "locationDesc": "We need your location to provide accurate weather forecasts and crop recommendations.",
+    "allowLocation": "Allow Location Access",
+    "enterManual": "Enter Location Manually",
+    "requesting": "Requesting location permission...",
+    "locationDetected": "Location detected",
+    "locationDenied": "Location access denied",
+    "enableLocation": "Please enable location or enter manually",
+    "continue": "Continue",
+    "selectSoil": "Select Your Soil Type",
+    "soilDesc": "Choose the soil type that matches your farm",
+    "completeSetup": "Complete Setup",
+    "soilTypes": {
+      "clay": {
+        "name": "Clay Soil",
+        "desc": "Heavy, sticky when wet, good water retention"
+      },
+      "sandy": {
+        "name": "Sandy Soil",
+        "desc": "Light, gritty, drains quickly"
+      },
+      "loamy": {
+        "name": "Loamy Soil",
+        "desc": "Ideal mix, fertile, well-balanced"
+      },
+      "silt": {
+        "name": "Silt Soil",
+        "desc": "Smooth, fertile, moisture retentive"
+      },
+      "black": {
+        "name": "Black Cotton Soil",
+        "desc": "Rich in clay, ideal for cotton"
+      },
+      "red": {
+        "name": "Red Soil",
+        "desc": "Iron-rich, porous, well-drained"
+      }
+    }
+  },
+  "dashboard": {
+    "title": "Smart Crop Advisory",
+    "welcome": "Welcome back",
+    "farmMonitoring": "Farm Monitoring",
+    "farmMonitoringDesc": "Manage crops & get AI recommendations",
+    "todayWeather": "Today's Weather",
+    "sunny": "Sunny",
+    "humidity": "Humidity",
+    "wind": "Wind",
+    "cropPerformance": "Crop Performance",
+    "yieldTrends": "Yield Trends (kg/acre)",
+    "todayAdvisories": "Today's Advisories",
+    "irrigation": "Irrigation",
+    "irrigationDesc": "Irrigate the crop today - soil moisture is at 45%",
+    "fertilization": "Fertilization",
+    "fertilizationDesc": "Apply nitrogen fertilizer - optimal growth phase",
+    "upcomingTasks": "Upcoming Tasks",
+    "pestMonitoring": "Pest monitoring",
+    "tomorrow": "Tomorrow"
   }
 }

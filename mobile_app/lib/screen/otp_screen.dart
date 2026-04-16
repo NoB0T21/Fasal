@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:mobile_app/backend_notifier/auth_notifier.dart';
+import 'package:mobile_app/screen/info_screen.dart';
 import 'package:mobile_app/screen/main_screen.dart';
 import 'package:mobile_app/utils/graphic.dart';
 import 'package:mobile_app/widget/custom_button.dart';
@@ -17,6 +21,7 @@ class OtpScreen extends ConsumerStatefulWidget {
 }
 
 class _OtpScreenState extends ConsumerState<OtpScreen> {
+  final _storage = FlutterSecureStorage();
   final TextEditingController _OTPController = TextEditingController();
 
   @override
@@ -29,6 +34,9 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
     final size = MediaQuery.of(context).size;
     final phoneNumber = widget.phoneNumber;
     ref.listen(authNotifierProvider, (prev, next) {
+      if (next.isLoading || next.isRefreshing) return;
+      if (prev == next) return;
+
       next.whenOrNull(
         error: (error, _) {
           final message = error is Exception
@@ -36,11 +44,25 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
             : 'Something went wrong';
           CustomSnakebar.show(context, message, Type.error);
         },
-        data: (data) {
+        data: (data) async {
           if (data != null && data['success'] == true) {
-            CustomSnakebar.show(context, "OTP sent successfully", Type.success);
-            final num = _OTPController.text.trim();
+            CustomSnakebar.show(context, "Login successfully", Type.success);
             _OTPController.clear();
+            final rawSoilType = await _storage.read(key: 'soilType');
+            final rawName = await _storage.read(key: 'name');
+            if(rawSoilType != null && rawName != null){
+              final Map<String, dynamic> value = jsonDecode(rawSoilType);
+              print(value);
+              if (rawName == 'true' && value['id'] != null) {
+                Navigator.pushNamedAndRemoveUntil(
+                    context, 
+                    InfoScreen.routename, 
+                    (route) => false,
+                );
+                return;
+              }
+              Navigator.pushNamedAndRemoveUntil(context, MainScreen.routename, (Route<dynamic> route) => false,);
+            }
             Navigator.pushNamedAndRemoveUntil(context, MainScreen.routename, (Route<dynamic> route) => false,);
           } else {
             CustomSnakebar.show(context, "Not a Valid OTP", Type.error);
@@ -48,7 +70,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
         }
       );
     });
-    final registerState = ref.watch(authNotifierProvider);
+    ref.watch(authNotifierProvider);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(

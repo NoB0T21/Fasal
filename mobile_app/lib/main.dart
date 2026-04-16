@@ -2,9 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobile_app/components/auth_wrapper.dart';
-// import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:mobile_app/components/permission_gatekeep.dart';
 import 'package:mobile_app/screen/home_screen.dart';
+import 'package:mobile_app/screen/info_screen.dart';
 import 'package:mobile_app/screen/login_screen.dart';
 import 'package:mobile_app/screen/main_screen.dart';
 import 'package:mobile_app/theme/main_app_theme.dart';
@@ -47,9 +47,10 @@ class MyApp extends StatelessWidget {
       routes: {
         LoginScreen.routename: (context) => const LoginScreen(),
         HomeScreen.routename: (context) => const HomeScreen(),
-        MainScreen.routename: (context) => const MainScreen()
+        MainScreen.routename: (context) => const MainScreen(),
+        InfoScreen.routename: (context) => const InfoScreen(),
       },
-      home: const AuthWrapper(),
+      home: const PermissionGatekeeper(),
     );
   }
 }

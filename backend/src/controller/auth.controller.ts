@@ -9,9 +9,9 @@ export const generateSendOTP = async (req: FastifyRequest<{Body: SendOTPBody}>, 
   const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
   const cacheKey = `phone:${phone}`
-  // await sendSIM_SMS(phone, `Your OTP for Fasal is: ${otp}. It is valid for 2 minutes.`);
+  await sendSIM_SMS(phone, `Your OTP for Fasal is: ${otp}. It is valid for 2 minutes.`);
   await redis.set(cacheKey, otp, "EX", 120); // OTP valid for 2 minutes
-  res.status(200).send({ success: true, message: `OTP sent to ${phone}`, otp });
+  res.status(200).send({ success: true, message: `OTP sent to ${phone}` });
 }
 
 export const verifyStoredOTP = async (req: FastifyRequest<{Body: VerifyOTPBody}>, res: FastifyReply) => {
@@ -33,7 +33,6 @@ export const verifyStoredOTP = async (req: FastifyRequest<{Body: VerifyOTPBody}>
     await redis.del(cacheKey); // Clean up OTP on error
     return res.status(200).send({ success: true, message: `OTP verified for ${phone}`});
   } catch (error) {
-    console.log("errornnnd", error);
     await redis.del(cacheKey);
     return res.status(500).send({ success: false, message: 'Try again after sometime' });
   }
