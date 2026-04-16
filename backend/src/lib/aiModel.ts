@@ -33,7 +33,7 @@ export default async function weatherdata(soil: string, location: {lat: number,l
   const prompt = `Location: Lat ${location.lat}, Lon ${location.lon}. Soil: ${soil}. Update dashboard.`;
   try {
     const response = await genAI.models.generateContent({
-      model: 'gemini-2.5-flash-lite', // Note: use current stable model names
+      model: process.env.GEMINI_MODLE as string, // Note: use current stable model names
       contents: [{ 
         role: 'user', 
         parts: [{ text: prompt }] 

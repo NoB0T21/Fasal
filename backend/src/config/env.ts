@@ -11,6 +11,7 @@ export default fp(async (fastify) => {
     DEVICE_ID: process.env.DEVICE_ID as string,
     TEXTBEE_API_KEY: process.env.TEXTBEE_API_KEY as string,
     SESSION_SECRET: process.env.SESSION_SECRET as string,
-    GEMINI_API_KEY: process.env.GEMINI_API_KEY as string
+    GEMINI_API_KEY: process.env.GEMINI_API_KEY as string,
+    GEMINI_MODLE: process.env.GEMINI_MODLE as string
   });
 });
