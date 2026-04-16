@@ -10,6 +10,7 @@ export default fp(async (fastify) => {
     REDIS_URL: process.env.REDIS_URL  as string,
     DEVICE_ID: process.env.DEVICE_ID as string,
     TEXTBEE_API_KEY: process.env.TEXTBEE_API_KEY as string,
-    SESSION_SECRET: process.env.SESSION_SECRET as string
+    SESSION_SECRET: process.env.SESSION_SECRET as string,
+    GEMINI_API_KEY: process.env.GEMINI_API_KEY as string
   });
 });

@@ -19,3 +19,12 @@ export const verifyOTP = z.object({
   ).min(6, "Invalid OTP number").max(6, "Invalid OTP number"),
 });
 export type VerifyOTPBody = z.infer<typeof verifyOTP>;
+
+export const MetaData = z.object({
+  soil: z.string().min(6, "Invalid soil data").max(25, "Invalid soil data"),
+  location: z.object({
+    lat: z.coerce.number().min(-90, "Invalid latitude").max(90, "Invalid latitude"),
+    lon: z.coerce.number().min(-180, "Invalid longitude").max(180, "Invalid longitude"),
+  }),
+});
+export type MetaDataBody = z.infer<typeof MetaData>;
