@@ -1,19 +1,22 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobile_app/backend_notifier/auth_notifier.dart';
+import 'package:mobile_app/screen/main_screen.dart';
 import 'package:mobile_app/utils/graphic.dart';
 import 'package:mobile_app/widget/custom_button.dart';
 import 'package:mobile_app/widget/custom_snakeBar.dart';
 import 'package:mobile_app/widget/custome_textField.dart';
 
-class OtpScreen extends StatefulWidget {
+class OtpScreen extends ConsumerStatefulWidget {
   final String phoneNumber;
   const OtpScreen({super.key, required this.phoneNumber});
 
   @override
-  State<OtpScreen> createState() => _OtpScreenState();
+  ConsumerState<OtpScreen> createState() => _OtpScreenState();
 }
 
-class _OtpScreenState extends State<OtpScreen> {
+class _OtpScreenState extends ConsumerState<OtpScreen> {
   final TextEditingController _OTPController = TextEditingController();
 
   @override
@@ -25,6 +28,27 @@ class _OtpScreenState extends State<OtpScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final phoneNumber = widget.phoneNumber;
+    ref.listen(authNotifierProvider, (prev, next) {
+      next.whenOrNull(
+        error: (error, _) {
+          final message = error is Exception
+            ? error.toString().replaceFirst('Exception: ', '')
+            : 'Something went wrong';
+          CustomSnakebar.show(context, message, Type.error);
+        },
+        data: (data) {
+          if (data != null && data['success'] == true) {
+            CustomSnakebar.show(context, "OTP sent successfully", Type.success);
+            final num = _OTPController.text.trim();
+            _OTPController.clear();
+            Navigator.pushNamedAndRemoveUntil(context, MainScreen.routename, (Route<dynamic> route) => false,);
+          } else {
+            CustomSnakebar.show(context, "Not a Valid OTP", Type.error);
+          }
+        }
+      );
+    });
+    final registerState = ref.watch(authNotifierProvider);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -59,14 +83,12 @@ class _OtpScreenState extends State<OtpScreen> {
                       ),
                       CustomButton(
                         onTap: () {
-                            String phoneNumber = _OTPController.text.trim();
-                            if (phoneNumber.length != 6 || !RegExp(r'^[0-9]+$').hasMatch(phoneNumber)) {
+                            String otp = _OTPController.text.trim();
+                            if (otp.length != 6 || !RegExp(r'^[0-9]+$').hasMatch(otp)) {
                               CustomSnakebar.show(context, "login.error.invalidOtp".tr(), Type.error);
                               return;
                             }
-                            // Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                            //   return ;
-                            // }));
+                            ref.read(authNotifierProvider.notifier).verifyOTP(phoneNumber, otp);
                         }, 
                         text: "login.verify".tr()
                       )

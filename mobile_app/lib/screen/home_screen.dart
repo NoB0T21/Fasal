@@ -13,6 +13,7 @@ const lang = [
 ];
 
 class HomeScreen extends StatefulWidget {
+  static String routename = '/landing-page';
   const HomeScreen({super.key});
 
   @override
