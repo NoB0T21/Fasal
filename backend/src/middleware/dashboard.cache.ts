@@ -9,7 +9,7 @@ export const dashBoardCache = () => async (request: FastifyRequest<{Body: MetaDa
       const cacheKey = `${user.phone}-${location.lat}-${location.lon}`
       const data = await redis.get(cacheKey);
       const parsh = JSON.parse(data||'');
-      if(data) return reply.status(200).send({success: true, data: parsh});
+      if(data && parsh) return reply.status(200).send({success: true, data: parsh});
     } catch (error) {
     }
   };
