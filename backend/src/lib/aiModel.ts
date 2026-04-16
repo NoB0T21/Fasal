@@ -43,7 +43,7 @@ export default async function weatherdata(soil: string, location: {lat: number,l
         responseMimeType: "application/json", // Ensures valid JSON for your Flutter app
       },
     });
-    return response.text;
+    return JSON.parse(response.text||'');
   } catch (error) {
     console.error('Error fetching weather data:', error);
   }
