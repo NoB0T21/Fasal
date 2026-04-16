@@ -22,7 +22,8 @@ export default async function weatherdata(soil: string, location: {lat: number,l
     - type: "Irrigation", "Fertilization", "Pest Control", "What crop should plant", etc... .
     - message: A clear, bold instruction (e.g., "Deep Water Today").
     - subtext: The scientific reason based on soil moisture (e.g., "Moisture is at 45% - prevent clay hardening").
-4. metadata: Include current soil type and precise location.
+4. today_weather: Provide temperature, condition, Humidity(in %), Wind(km/h)
+5. metadata: Include current soil type and precise location.
 
 ### TONE & LOGIC:
 - Speak as a helpful peer ("Welcome back, Farmer").
