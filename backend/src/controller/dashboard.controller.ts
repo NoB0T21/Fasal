@@ -14,7 +14,7 @@ export const getDashobardData = async (req: FastifyRequest<{Body: MetaDataBody}>
 
   const { location, soil } = req.body;
   try {
-    const cacheKey = `${user.phone}-${location.lat}-${location.lon}`
+    const cacheKey = `dashboard: ${user.phone}`
     const data = await weatherdata(soil, location);
     await redis.set(cacheKey, JSON.stringify(data), "EX", 7200);
     return res.status(200).send({success: true,  data: data});

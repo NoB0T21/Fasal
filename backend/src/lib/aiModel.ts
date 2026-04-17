@@ -1,5 +1,4 @@
 import { GoogleGenAI } from '@google/genai';
-import { number, string } from 'zod';
 
 const genAI = new GoogleGenAI({ 
   apiKey: process.env.GEMINI_API_KEY as string 

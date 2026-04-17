@@ -5,8 +5,7 @@ import redis from "../DB/redis.js";
 export const dashBoardCache = () => async (request: FastifyRequest<{Body: MetaDataBody}>, reply: FastifyReply) => {
     try {
       const user = request.session.user;
-      const { location } = request.body;
-      const cacheKey = `${user.phone}-${location.lat}-${location.lon}`
+      const cacheKey = `dashboard: ${user.phone}`
       const data = await redis.get(cacheKey);
       const parsh = JSON.parse(data||'');
       if(data && parsh) return reply.status(200).send({success: true, data: parsh});
