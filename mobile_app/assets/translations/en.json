@@ -79,10 +79,6 @@
     "cropPerformance": "Crop Performance",
     "yieldTrends": "Yield Trends (kg/acre)",
     "todayAdvisories": "Today's Advisories",
-    "irrigation": "Irrigation",
-    "irrigationDesc": "Irrigate the crop today - soil moisture is at 45%",
-    "fertilization": "Fertilization",
-    "fertilizationDesc": "Apply nitrogen fertilizer - optimal growth phase",
     "upcomingTasks": "Upcoming Tasks",
     "pestMonitoring": "Pest monitoring",
     "tomorrow": "Tomorrow"

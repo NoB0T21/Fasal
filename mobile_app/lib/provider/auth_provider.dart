@@ -6,7 +6,6 @@ enum AuthStatus { loading, authenticated, unauthenticated }
 final authProvider = FutureProvider<AuthStatus>((ref) async {
   final api = ref.read(backendApiProvider);
   final status = await api.verifyUser();
-  print(status);
   if (status['success']) {
     return AuthStatus.authenticated;
   }

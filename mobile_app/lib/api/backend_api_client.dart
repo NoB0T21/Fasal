@@ -77,4 +77,22 @@ class BackendApiClient {
     _storage.delete(key: 'session_cookie');
     return responseBody;
   }
+
+  Future<Map<String, dynamic>> getDashboardData(String soil, String lat, String lon) async {
+    final url = '$baseurl/api/v1/dashboard/get-data';
+    final response = await client.post(
+      Uri.parse(url),
+      headers:{'Content-Type': 'application/json',},
+      body: jsonEncode({
+        "soil": soil,
+        "location": {
+          "lat": lat,
+          "lon": lon
+        }
+      })
+    );
+    print(response.headers);
+    final responseBody = jsonDecode(response.body);
+    return responseBody;
+  }
 }

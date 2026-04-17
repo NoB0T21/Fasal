@@ -50,10 +50,10 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
             _OTPController.clear();
             final rawSoilType = await _storage.read(key: 'soilType');
             final rawName = await _storage.read(key: 'name');
+            print(rawSoilType);
             if(rawSoilType != null && rawName != null){
               final Map<String, dynamic> value = jsonDecode(rawSoilType);
-              print(value);
-              if (rawName == 'true' && value['id'] != null) {
+              if (rawName.isNotEmpty && value['id'] != null) {
                 Navigator.pushNamedAndRemoveUntil(
                     context, 
                     InfoScreen.routename, 

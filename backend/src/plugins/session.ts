@@ -16,9 +16,9 @@ export default fp(async function (fastify: any) {
       // Connect-redis v9 passes an options object. 
       // We manually extract the TTL to ensure Redis gets the correct syntax.
       if (options && options.ttl) {
-        return redis.set(key, val, "EX", options.ttl);
+        return redis.set(key, val, "EX", 86400);
       }
-      return redis.set(key, val);
+      return redis.set(key, val, "EX", 86400);
     },
     del: (key: string) => redis.del(key),
   };
