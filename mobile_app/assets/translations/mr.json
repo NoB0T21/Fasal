@@ -86,5 +86,17 @@
     "upcomingTasks": "पुढील कामे",
     "pestMonitoring": "कीड नियंत्रण देखरेख",
     "tomorrow": "उद्या"
+  },
+  "pestDetect": {
+    "title": "कीड ओळख",
+    "subtitle": "पिकाचा फोटो अपलोड करा किंवा काढा",
+    "uploadImage": "फोटो अपलोड करा",
+    "takePhoto": "फोटो काढा",
+    "analyzing": "फोटोचे विश्लेषण होत आहे...",
+    "detected": "आढळलेले",
+    "confidence": "निश्चितता",
+    "severity": "तीव्रता",
+    "treatment": "शिफारस केलेले उपचार",
+    "back": "मागे"
   }
 }

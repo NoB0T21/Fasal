@@ -47,5 +47,11 @@
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app needs location access to function.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We need access to your camera to detect pests in your crops.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need access to your gallery to upload crop images.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Used for video if required (optional for image_picker).</string>
 </dict>
 </plist>

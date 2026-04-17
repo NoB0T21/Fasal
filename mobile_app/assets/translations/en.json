@@ -82,5 +82,17 @@
     "upcomingTasks": "Upcoming Tasks",
     "pestMonitoring": "Pest monitoring",
     "tomorrow": "Tomorrow"
+  },
+  "pestDetect": {
+    "title": "Pest Detection",
+    "subtitle": "Upload or capture crop image",
+    "uploadImage": "Upload Image",
+    "takePhoto": "Take Photo",
+    "analyzing": "Analyzing image...",
+    "detected": "Detected",
+    "confidence": "Confidence",
+    "severity": "Severity",
+    "treatment": "Recommended Treatment",
+    "back": "Back"
   }
 }

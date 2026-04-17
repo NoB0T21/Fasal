@@ -10,7 +10,6 @@ import 'package:mobile_app/components/weather_card.dart';
 // import 'package:mobile_app/widget/custom_snakeBar.dart';
 
 class InfoScreen extends ConsumerStatefulWidget {
-  static String routename = '/info';
   const InfoScreen({super.key});
 
   @override
@@ -51,7 +50,8 @@ class _InfoScreenState extends ConsumerState<InfoScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('${'dashboard.welcome'.tr()} ${data['name']} ${data['metadata']['soil'].toString()}'),
+                  Text('${'dashboard.welcome'.tr()} ${data['name']}'),
+                  Text('soil type: ${data['metadata']['soil'].toString()}'),
                   WeatherCard(weeklyData:data['weather_graph'] , todaysWeather:data['today_weather'], yieldData: data['yield_graph'],),
                   SizedBox(height: height * 0.02),
                   Text('dashboard.todayWeather'.tr(), style: TextStyle(fontWeight: FontWeight.bold)),

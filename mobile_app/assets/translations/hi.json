@@ -86,5 +86,17 @@
     "upcomingTasks": "आगामी कार्य",
     "pestMonitoring": "कीट निगरानी",
     "tomorrow": "कल"
+  },
+  "pestDetect": {
+    "title": "कीट पहचान",
+    "subtitle": "फसल की छवि अपलोड करें या कैप्चर करें",
+    "uploadImage": "छवि अपलोड करें",
+    "takePhoto": "फोटो लें",
+    "analyzing": "छवि का विश्लेषण किया जा रहा है...",
+    "detected": "पहचाना गया",
+    "confidence": "आत्मविश्वास स्तर",
+    "severity": "गंभीरता",
+    "treatment": "अनुशंसित उपचार",
+    "back": "पीछे"
   }
 }

@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:mobile_app/backend_notifier/auth_notifier.dart';
-import 'package:mobile_app/screen/info_screen.dart';
 import 'package:mobile_app/screen/main_screen.dart';
+import 'package:mobile_app/screen/nav_screen.dart';
 import 'package:mobile_app/utils/graphic.dart';
 import 'package:mobile_app/widget/custom_button.dart';
 import 'package:mobile_app/widget/custom_snakeBar.dart';
@@ -56,7 +56,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
               if (rawName.isNotEmpty && value['id'] != null) {
                 Navigator.pushNamedAndRemoveUntil(
                     context, 
-                    InfoScreen.routename, 
+                    NavScreen.routename, 
                     (route) => false,
                 );
                 return;

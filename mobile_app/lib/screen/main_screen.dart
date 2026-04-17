@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:mobile_app/components/select_soil_type.dart';
 import 'package:mobile_app/components/set_name.dart';
-import 'package:mobile_app/screen/info_screen.dart';
-import 'package:mobile_app/widget/custom_button.dart';
+import 'package:mobile_app/screen/nav_screen.dart';
 import 'package:mobile_app/widget/custom_snakeBar.dart';
 
 class MainScreen extends StatefulWidget {
@@ -98,7 +97,7 @@ class _MainScreenState extends State<MainScreen> {
           if(value == 1 || soilTypes['id'] != 'none'){
             await _storage.write(key: 'name', value: _nameConotroller.text);
             await _storage.write(key: 'soilType', value: jsonEncode(soilTypes));
-            Navigator.pushNamedAndRemoveUntil(context, InfoScreen.routename, (Route<dynamic> route) => false,);
+            Navigator.pushNamedAndRemoveUntil(context, NavScreen.routename, (Route<dynamic> route) => false,);
           }
         },
         items: const [

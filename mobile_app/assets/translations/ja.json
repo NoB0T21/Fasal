@@ -86,5 +86,17 @@
     "upcomingTasks": "今後のタスク",
     "pestMonitoring": "害虫モニタリング",
     "tomorrow": "明日"
+  },
+  "pestDetect": {
+    "title": "害虫検知",
+    "subtitle": "作物の画像をアップロードまたは撮影してください",
+    "uploadImage": "画像をアップロード",
+    "takePhoto": "写真を撮る",
+    "analyzing": "画像を解析中...",
+    "detected": "検知済み",
+    "confidence": "信頼度",
+    "severity": "深刻度",
+    "treatment": "推奨される処置",
+    "back": "戻る"
   }
 }

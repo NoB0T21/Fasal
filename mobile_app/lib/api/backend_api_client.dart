@@ -1,9 +1,12 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:mobile_app/api/http_client.dart';
+import 'package:mobile_app/exceptions/api_exception.dart';
+import 'package:mobile_app/models/report_data_model.dart';
 
 class BackendApiClient {
   final String baseurl = dotenv.env['BACKEND_URL']!;
@@ -91,8 +94,31 @@ class BackendApiClient {
         }
       })
     );
-    print(response.headers);
     final responseBody = jsonDecode(response.body);
     return responseBody;
+  }
+
+  Future<ReportDataModel> getReportData(String soil, File image) async {
+    final url = Uri.parse('$baseurl/api/v1/report/get-data');
+    final request = http.MultipartRequest('POST', url);
+
+    request.fields['soil'] = soil;
+    request.files.add(
+      await http.MultipartFile.fromPath('image', image.path),
+    );
+
+    final streamedResponse = await client.send(request);
+    final responseBody = await streamedResponse.stream.bytesToString();
+
+    if (streamedResponse.statusCode != 200) {
+      throw ApiException(
+        statusCode: streamedResponse.statusCode,
+        message: 'Failed to fetch report data',
+      );
+    }
+
+    final body = jsonDecode(responseBody) as Map<String, dynamic>;
+    print(body);
+    return ReportDataModel.fromJson(body['data'] as Map<String, dynamic>);
   }
 }

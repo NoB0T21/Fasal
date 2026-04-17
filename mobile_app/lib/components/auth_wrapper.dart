@@ -5,10 +5,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:mobile_app/provider/auth_provider.dart';
 import 'package:mobile_app/screen/home_screen.dart';
-import 'package:mobile_app/screen/info_screen.dart';
 import 'package:mobile_app/screen/login_screen.dart';
 import 'package:mobile_app/screen/main_screen.dart';
 import 'package:lottie/lottie.dart';
+import 'package:mobile_app/screen/nav_screen.dart';
 
 class AuthWrapper extends ConsumerStatefulWidget {
   const AuthWrapper({super.key});
@@ -64,7 +64,7 @@ class _AuthWrapperState extends ConsumerState<AuthWrapper> with TickerProviderSt
                 try {
                   final Map<String, dynamic> value = jsonDecode(rawSoilType);
                   if (rawName.isNotEmpty && value['id'] != null) {
-                    return const InfoScreen();
+                    return const NavScreen();
                   }
                 } catch (e) {
                   debugPrint("JSON Error: $e");
