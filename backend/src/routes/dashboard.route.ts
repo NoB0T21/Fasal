@@ -14,7 +14,7 @@ export default async function dashBoardRoutes(app: FastifyInstance) {
     },
     preHandler: [
         validate(MetaData),
-        dashBoardCache()
+        dashBoardCache('dashboard:')
     ]
   }, getDashobardData);
 //   app.get('/logout', logoutUser);
