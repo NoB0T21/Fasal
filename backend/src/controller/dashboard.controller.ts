@@ -34,6 +34,8 @@ export const getReportData = async (req: FastifyRequest, res: FastifyReply) => {
     let imageBase64 = null
     let name = null
 
+    const user = req.session.user;
+    const cacheKey = `report: ${user.phone}`
     console.log('✅ ','soilType, mediaType')
     for await (const part of parts) {
       if (part.type === 'field' && part.fieldname === 'soil') {
@@ -56,6 +58,7 @@ export const getReportData = async (req: FastifyRequest, res: FastifyReply) => {
     console.log('✅ ',soilType, mediaType)
     const result = await processReport(soilType.toString(), imageBase64, mediaType)
     fs.unlinkSync(imagePath)
+    await redis.set(cacheKey, JSON.stringify(result), "EX", 7200);
     return res.send({
       data: result
     })
