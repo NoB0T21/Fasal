@@ -16,3 +16,4 @@ docker-compose.yml
 # Build cache (if any)
 dist
 build
+test.js

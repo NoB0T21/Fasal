@@ -16,7 +16,7 @@ export const getDashobardData = async (req: FastifyRequest<{Body: MetaDataBody}>
   try {
     const cacheKey = `${user.phone}-${location.lat}-${location.lon}`
     const data = await weatherdata(soil, location);
-    await redis.set(cacheKey, JSON.stringify(data), "EX", 300);
+    await redis.set(cacheKey, JSON.stringify(data), "EX", 7200);
     return res.status(200).send({success: true,  data: data});
   } catch (error) {
     return res.status(500).send({ error: 'Failed to fetch dashboard data' });

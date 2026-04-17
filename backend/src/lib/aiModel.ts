@@ -6,31 +6,71 @@ const genAI = new GoogleGenAI({
 });
 
 const schema = {
-  "weather_graph": [{
-    "x": number,
-    "y": number,
-    "day": string
-  }],
-  "yield_graph": [{
-    "month": string,
-    "yield": number
-  }],
-  "today_advisories":[{
-    "type": string,
-    "message": string,
-    "subtext": string
-  }],
-  "today_weather":{
-    "temperature": number,
-    "condition": string,
-    "humidity": number,
-    "wind": number
+  "type": "object",
+  "properties": {
+    "weather_graph": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "x": { "type": "number" },
+          "y": { "type": "number" },
+          "day": { "type": "string" }
+        },
+        "required": ["x", "y", "day"]
+      }
+    },
+    "yield_graph": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "month": { "type": "string" },
+          "yield": { "type": "number" }
+        },
+        "required": ["month", "yield"]
+      }
+    },
+    "today_advisories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "message": { "type": "string" },
+          "subtext": { "type": "string" }
+        },
+        "required": ["type", "message", "subtext"]
+      }
+    },
+    "today_weather": {
+      "type": "object",
+      "properties": {
+        "temperature": { "type": "number" },
+        "condition": { "type": "string" },
+        "humidity": { "type": "number" },
+        "wind": { "type": "number" }
+      },
+      "required": ["temperature", "condition", "humidity", "wind"]
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "soil": { "type": "string" },
+        "location": { "type": "string" }
+      },
+      "required": ["soil", "location"]
+    }
   },
-  "metadata":{
-    "soil": string,
-    "location": string
-  }
+  "required": [
+    "weather_graph",
+    "yield_graph",
+    "today_advisories",
+    "today_weather",
+    "metadata"
+  ]
 }
+
 export default async function weatherdata(soil: string, location: {lat: number,lon: number}) {
   const systemInstruction = `Act as an Expert AI Agronomist and Farmer specialized in Indian agriculture, specifically for the Vasai-Virar region. Your primary goal is to provide data-driven weather and soil advisories for farmers using Clay soil.
 
@@ -49,11 +89,9 @@ export default async function weatherdata(soil: string, location: {lat: number,l
     - type: "Irrigation", "Fertilization", "Pest Control", "What crop should plant", etc... .
     - message: A clear, bold instruction (e.g., "Deep Water Today").
     - subtext: The scientific reason based on soil moisture (e.g., "Moisture is at 45% - prevent clay hardening").
-4. today_weather: Provide temperature, condition, Humidity(in %), Wind(km/h)
+4. today_weather: Provide temperature, condition, Humidity(with %), Wind(with km/h)
 5. metadata: Include current soil type and precise location.
 
-###Schema:
-follow this schema: ${schema}
 
 ### TONE & LOGIC:
 - Speak as a helpful peer ("Welcome back, Farmer").
@@ -71,6 +109,7 @@ follow this schema: ${schema}
       config: {
         systemInstruction: systemInstruction,
         responseMimeType: "application/json", // Ensures valid JSON for your Flutter app
+        responseJsonSchema: schema
       },
     });
     return JSON.parse(response.text||'');
