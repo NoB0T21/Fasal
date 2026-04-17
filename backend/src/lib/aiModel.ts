@@ -1,9 +1,36 @@
 import { GoogleGenAI } from '@google/genai';
+import { number, string } from 'zod';
 
 const genAI = new GoogleGenAI({ 
   apiKey: process.env.GEMINI_API_KEY as string 
 });
 
+const schema = {
+  "weather_graph": [{
+    "x": number,
+    "y": number,
+    "day": string
+  }],
+  "yield_graph": [{
+    "month": string,
+    "yield": number
+  }],
+  "today_advisories":[{
+    "type": string,
+    "message": string,
+    "subtext": string
+  }],
+  "today_weather":{
+    "temperature": number,
+    "condition": string,
+    "humidity": number,
+    "wind": number
+  },
+  "metadata":{
+    "soil": string,
+    "location": string
+  }
+}
 export default async function weatherdata(soil: string, location: {lat: number,lon: number}) {
   const systemInstruction = `Act as an Expert AI Agronomist and Farmer specialized in Indian agriculture, specifically for the Vasai-Virar region. Your primary goal is to provide data-driven weather and soil advisories for farmers using Clay soil.
 
@@ -24,6 +51,9 @@ export default async function weatherdata(soil: string, location: {lat: number,l
     - subtext: The scientific reason based on soil moisture (e.g., "Moisture is at 45% - prevent clay hardening").
 4. today_weather: Provide temperature, condition, Humidity(in %), Wind(km/h)
 5. metadata: Include current soil type and precise location.
+
+###Schema:
+follow this schema: ${schema}
 
 ### TONE & LOGIC:
 - Speak as a helpful peer ("Welcome back, Farmer").
